@@ -1,0 +1,57 @@
+/* =============================
+   VARIABLES & RESET
+   ============================= */
+
+:root {
+  --couleur-principale: #000000;
+  --couleur-secondaire: #ffffff;
+  --couleur-accent: #c9a84c; /* doré */
+  --font-principale: 'Arial', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-principale);
+  background-color: var(--couleur-principale);
+  color: var(--couleur-secondaire);
+}
+
+/* =============================
+   NAVIGATION
+   À coder : style du header/nav
+   ============================= */
+
+/* =============================
+   HERO
+   À coder : style de la section hero
+   ============================= */
+
+/* =============================
+   SERVICES
+   À coder : style des cartes services
+   ============================= */
+
+/* =============================
+   GALERIE
+   À coder : style de la grille galerie
+   ============================= */
+
+/* =============================
+   TARIFS
+   À coder : style des tableaux de prix
+   ============================= */
+
+/* =============================
+   CONTACT
+   À coder : style du formulaire
+   ============================= */
+
+/* =============================
+   FOOTER
+   À coder : style du footer
+   ============================= */
