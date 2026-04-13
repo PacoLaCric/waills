@@ -3,48 +3,975 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Waills Détailing</title>
+  <title>WAILLS — Détailing Automobile Premium</title>
+  <meta name="description" content="WAILLS, expert en détailing automobile haut de gamme. Polissage machine, protection céramique, film PPF, nettoyage intérieur." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- HEADER / NAVIGATION -->
-  <header>
-    <nav>
-      <!-- À coder : logo + liens de navigation -->
-    </nav>
+  <!-- ===================== CURSOR ===================== -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <div id="cursor-trail-container"></div>
+
+  <!-- ===================== LOADER ===================== -->
+  <div id="loader">
+    <div class="loader-inner">
+      <svg class="loader-svg" viewBox="0 0 400 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text class="loader-text-path" x="0" y="65" font-family="Playfair Display" font-size="72" font-weight="900" letter-spacing="8">WAILLS</text>
+      </svg>
+      <div class="loader-line"><span></span></div>
+      <p class="loader-subtitle">Détailing Automobile Premium</p>
+    </div>
+  </div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="WAILLS accueil">
+        <svg class="logo-svg" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="22" font-family="Playfair Display" font-size="24" font-weight="900" letter-spacing="4" fill="currentColor">WAILLS</text>
+        </svg>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#services" data-text="Services">Services</a>
+        <a href="#galerie" data-text="Galerie">Galerie</a>
+        <a href="#processus" data-text="Processus">Processus</a>
+        <a href="#tarifs" data-text="Tarifs">Tarifs</a>
+        <a href="#contact" data-text="Contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta magnetic">Réserver</a>
+      <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  <!-- SECTION HERO -->
+  <!-- Mobile overlay -->
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true">
+    <nav class="mobile-nav">
+      <a href="#services" class="mobile-link" onclick="closeMobileMenu()"><span>01</span>Services</a>
+      <a href="#galerie" class="mobile-link" onclick="closeMobileMenu()"><span>02</span>Galerie</a>
+      <a href="#processus" class="mobile-link" onclick="closeMobileMenu()"><span>03</span>Processus</a>
+      <a href="#tarifs" class="mobile-link" onclick="closeMobileMenu()"><span>04</span>Tarifs</a>
+      <a href="#contact" class="mobile-link" onclick="closeMobileMenu()"><span>05</span>Contact</a>
+    </nav>
+    <div class="mobile-footer">
+      <p>contact@waills.fr</p>
+      <p>+33 6 XX XX XX XX</p>
+    </div>
+  </div>
+
   <main>
+
+    <!-- ===================== HERO ===================== -->
     <section id="hero">
-      <!-- À coder : titre principal, sous-titre, bouton call-to-action -->
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-noise"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow reveal-text">
+          <span></span>Détailing Premium<span></span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-line clip-reveal">L'Art du</span>
+          <span class="hero-title-line clip-reveal delay-1">
+            <em>Détail</em>
+          </span>
+          <span class="hero-title-line clip-reveal delay-2">Parfait</span>
+        </h1>
+        <p class="hero-typewriter" id="heroTypewriter"></p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-liquid magnetic">
+            <span>Prendre rendez-vous</span>
+            <div class="btn-liquid-bg"></div>
+          </a>
+          <a href="#galerie" class="btn-ghost">
+            <span>Voir nos réalisations</span>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <div class="hero-badges">
+          <div class="hero-badge reveal-up" style="--d:0.6s">
+            <strong>500+</strong><span>Véhicules</span>
+          </div>
+          <div class="hero-badge reveal-up" style="--d:0.75s">
+            <strong>5★</strong><span>Satisfaction</span>
+          </div>
+          <div class="hero-badge reveal-up" style="--d:0.9s">
+            <strong>5 ans</strong><span>d'expertise</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <div class="scroll-line"><span></span></div>
+        <p>Défiler</p>
+      </div>
     </section>
 
-    <!-- SECTION SERVICES -->
+    <!-- ===================== SERVICES ===================== -->
     <section id="services">
-      <!-- À coder : liste de tes services -->
+      <div class="noise-overlay"></div>
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label reveal-up">Ce que nous faisons</p>
+          <h2 class="section-title reveal-up delay-1">Nos <em>Services</em></h2>
+          <p class="section-desc reveal-up delay-2">Des prestations d'exception pour chaque véhicule,<br>chaque passion, chaque exigence.</p>
+        </header>
+
+        <div class="bento-grid">
+          <!-- Card 1 : Lavage Premium (grande) -->
+          <div class="service-card bento-large tilt-card" data-tilt>
+            <div class="card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 48C8 48 12 36 32 36C52 36 56 48 56 48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M20 36C20 36 22 24 32 24C42 24 44 36 44 36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M28 24C28 24 29 16 32 16C35 16 36 24 36 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="8" y1="52" x2="56" y2="52" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Lavage<br>Premium</h3>
+              <span class="card-tag">Extérieur</span>
+            </div>
+            <div class="card-back">
+              <h3>Lavage Premium</h3>
+              <p>Décontamination complète, lavage carrosserie bi-mousse, jantes, vitres, finitions chromées. La base impeccable pour tout traitement ultérieur.</p>
+              <div class="card-back-price">À partir de <strong>59€</strong></div>
+              <a href="#contact" class="card-cta">Réserver →</a>
+            </div>
+          </div>
+
+          <!-- Card 2 : Polissage -->
+          <div class="service-card tilt-card" data-tilt>
+            <div class="card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="32" cy="32" r="10" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+                  <circle cx="32" cy="32" r="3" fill="currentColor"/>
+                  <path d="M32 12V8M32 56V52M12 32H8M56 32H52" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Polissage<br>Machine</h3>
+              <span class="card-tag">Correction</span>
+            </div>
+            <div class="card-back">
+              <h3>Polissage Machine</h3>
+              <p>Correction professionnelle de peinture. Élimination des micro-rayures, tourbillons et oxydation pour une finition miroir.</p>
+              <div class="card-back-price">À partir de <strong>149€</strong></div>
+              <a href="#contact" class="card-cta">Réserver →</a>
+            </div>
+          </div>
+
+          <!-- Card 3 : Céramique (grande verticalement) -->
+          <div class="service-card bento-tall tilt-card" data-tilt>
+            <div class="card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M32 8L36 20H48L38 27L42 40L32 32L22 40L26 27L16 20H28L32 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="32" cy="32" r="26" stroke="currentColor" stroke-width="1" stroke-dasharray="3 6"/>
+                </svg>
+              </div>
+              <h3>Protection<br>Céramique</h3>
+              <span class="card-tag">Protection 5 ans</span>
+            </div>
+            <div class="card-back">
+              <h3>Protection Céramique</h3>
+              <p>Revêtement nano-céramique professionnel. Hydrophobe, anti-UV, anti-contaminants. Protège et sublime votre peinture pendant 2 à 5 ans.</p>
+              <div class="card-back-price">À partir de <strong>349€</strong></div>
+              <a href="#contact" class="card-cta">Réserver →</a>
+            </div>
+          </div>
+
+          <!-- Card 4 : PPF -->
+          <div class="service-card tilt-card" data-tilt>
+            <div class="card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="10" y="18" width="44" height="28" rx="4" stroke="currentColor" stroke-width="2"/>
+                  <path d="M10 26H54" stroke="currentColor" stroke-width="2"/>
+                  <path d="M20 18V14M44 18V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M18 34H30M18 40H26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Film<br>PPF</h3>
+              <span class="card-tag">Protection physique</span>
+            </div>
+            <div class="card-back">
+              <h3>Film PPF</h3>
+              <p>Film polyuréthane auto-cicatrisant invisible. Protection maximale contre les impacts, gravillons et éclats de route.</p>
+              <div class="card-back-price">À partir de <strong>299€</strong></div>
+              <a href="#contact" class="card-cta">Réserver →</a>
+            </div>
+          </div>
+
+          <!-- Card 5 : Détailing Intérieur (grande) -->
+          <div class="service-card bento-wide tilt-card" data-tilt>
+            <div class="card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="20" width="48" height="32" rx="6" stroke="currentColor" stroke-width="2"/>
+                  <path d="M14 20V16C14 13.8 15.8 12 18 12H46C48.2 12 50 13.8 50 16V20" stroke="currentColor" stroke-width="2"/>
+                  <path d="M22 36C22 33.8 23.8 32 26 32H38C40.2 32 42 33.8 42 36V52H22V36Z" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="32" cy="28" r="3" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <h3>Détailing<br>Intérieur</h3>
+              <span class="card-tag">Habitacle</span>
+            </div>
+            <div class="card-back">
+              <h3>Détailing Intérieur</h3>
+              <p>Nettoyage complet de l'habitacle : aspiration, shampoing moquettes, cuir, plastiques, vitres intérieures et désinfection UV.</p>
+              <div class="card-back-price">À partir de <strong>129€</strong></div>
+              <a href="#contact" class="card-cta">Réserver →</a>
+            </div>
+          </div>
+
+          <!-- Card 6 : Ozénisation -->
+          <div class="service-card tilt-card" data-tilt>
+            <div class="card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 48C20 48 16 40 16 32C16 23.2 23.2 16 32 16C40.8 16 48 23.2 48 32C48 40 44 48 44 48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M25 48C25 48 22 42 22 36C22 29.4 26.5 24 32 24C37.5 24 42 29.4 42 36C42 42 39 48 39 48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="32" cy="36" r="4" fill="currentColor"/>
+                  <line x1="18" y1="52" x2="46" y2="52" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Ozénisation</h3>
+              <span class="card-tag">Traitement</span>
+            </div>
+            <div class="card-back">
+              <h3>Ozénisation</h3>
+              <p>Traitement à l'ozone pour éliminer définitivement les odeurs tenaces (tabac, animaux, humidité) et désinfecter l'habitacle.</p>
+              <div class="card-back-price">À partir de <strong>79€</strong></div>
+              <a href="#contact" class="card-cta">Réserver →</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- SECTION GALERIE -->
+    <!-- ===================== GALERIE ===================== -->
     <section id="galerie">
-      <!-- À coder : grille de photos avant/après -->
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label reveal-up">Nos réalisations</p>
+          <h2 class="section-title reveal-up delay-1">Avant / <em>Après</em></h2>
+          <p class="section-desc reveal-up delay-2">Faites glisser pour révéler la transformation.</p>
+        </header>
+      </div>
+      <div class="gallery-scroll-container" id="galleryScrollContainer">
+        <!-- Slide 1 -->
+        <div class="gallery-slide">
+          <div class="before-after-slider" data-index="0">
+            <div class="ba-before">
+              <div class="ba-visual ba-visual--before ba-style-1"></div>
+              <span class="ba-label">Avant</span>
+            </div>
+            <div class="ba-after">
+              <div class="ba-visual ba-visual--after ba-style-1a"></div>
+              <span class="ba-label">Après</span>
+            </div>
+            <div class="ba-handle">
+              <div class="ba-handle-line"></div>
+              <div class="ba-handle-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" transform="translate(6,0)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-slide-info">
+            <h3>Polissage 2 étapes</h3>
+            <p>Correction complète de la peinture — BMW M4</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="gallery-slide">
+          <div class="before-after-slider" data-index="1">
+            <div class="ba-before">
+              <div class="ba-visual ba-visual--before ba-style-2"></div>
+              <span class="ba-label">Avant</span>
+            </div>
+            <div class="ba-after">
+              <div class="ba-visual ba-visual--after ba-style-2a"></div>
+              <span class="ba-label">Après</span>
+            </div>
+            <div class="ba-handle">
+              <div class="ba-handle-line"></div>
+              <div class="ba-handle-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" transform="translate(6,0)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-slide-info">
+            <h3>Protection Céramique</h3>
+            <p>Traitement 3 ans — Porsche 911 GT3</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="gallery-slide">
+          <div class="before-after-slider" data-index="2">
+            <div class="ba-before">
+              <div class="ba-visual ba-visual--before ba-style-3"></div>
+              <span class="ba-label">Avant</span>
+            </div>
+            <div class="ba-after">
+              <div class="ba-visual ba-visual--after ba-style-3a"></div>
+              <span class="ba-label">Après</span>
+            </div>
+            <div class="ba-handle">
+              <div class="ba-handle-line"></div>
+              <div class="ba-handle-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" transform="translate(6,0)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-slide-info">
+            <h3>Détailing Intérieur Complet</h3>
+            <p>Full intérieur cuir — Mercedes AMG GT</p>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="gallery-slide">
+          <div class="before-after-slider" data-index="3">
+            <div class="ba-before">
+              <div class="ba-visual ba-visual--before ba-style-4"></div>
+              <span class="ba-label">Avant</span>
+            </div>
+            <div class="ba-after">
+              <div class="ba-visual ba-visual--after ba-style-4a"></div>
+              <span class="ba-label">Après</span>
+            </div>
+            <div class="ba-handle">
+              <div class="ba-handle-line"></div>
+              <div class="ba-handle-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" transform="translate(6,0)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-slide-info">
+            <h3>Film PPF Capot + Ailes</h3>
+            <p>Protection intégrale zones d'impact — Audi RS6</p>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="gallery-slide">
+          <div class="before-after-slider" data-index="4">
+            <div class="ba-before">
+              <div class="ba-visual ba-visual--before ba-style-5"></div>
+              <span class="ba-label">Avant</span>
+            </div>
+            <div class="ba-after">
+              <div class="ba-visual ba-visual--after ba-style-5a"></div>
+              <span class="ba-label">Après</span>
+            </div>
+            <div class="ba-handle">
+              <div class="ba-handle-line"></div>
+              <div class="ba-handle-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" transform="translate(6,0)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-slide-info">
+            <h3>Lavage + Remise en état jantes</h3>
+            <p>Pack complet extérieur — Ferrari 488</p>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-nav">
+        <button class="gallery-prev" id="galleryPrev" aria-label="Précédent">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="gallery-dots" id="galleryDots"></div>
+        <button class="gallery-next" id="galleryNext" aria-label="Suivant">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
     </section>
 
-    <!-- SECTION TARIFS -->
+    <!-- ===================== PROCESSUS ===================== -->
+    <section id="processus">
+      <div class="noise-overlay"></div>
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label reveal-up">Comment ça marche</p>
+          <h2 class="section-title reveal-up delay-1">Notre <em>Processus</em></h2>
+          <p class="section-desc reveal-up delay-2">5 étapes rigoureuses pour un résultat sans compromis.</p>
+        </header>
+        <div class="timeline">
+          <div class="timeline-line">
+            <div class="timeline-progress" id="timelineProgress"></div>
+          </div>
+          <div class="timeline-item" data-step="1">
+            <div class="timeline-dot">
+              <span>01</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3>Diagnostic</h3>
+              <p>Inspection complète du véhicule à l'aide d'un éclairage spécialisé. Identification de tous les défauts, évaluation de l'état de la peinture et des matériaux intérieurs.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-step="2">
+            <div class="timeline-dot">
+              <span>02</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M24 8v8M24 32v8M8 24h8M32 24h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Préparation</h3>
+              <p>Décontamination chimique et mécanique. Argile, déferrisage, nettoyage des jantes et des passages de roues. La surface est prête à recevoir tout traitement.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-step="3">
+            <div class="timeline-dot">
+              <span>03</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M12 36L24 12L36 36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16 28h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Traitement</h3>
+              <p>Application du traitement principal choisi : polissage machine multi-étapes, pose de céramique, film PPF, ou nettoyage intérieur en profondeur selon votre formule.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-step="4">
+            <div class="timeline-dot">
+              <span>04</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M24 8L28 18H40L30 24L34 36L24 28L14 36L18 24L8 18H20L24 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3>Finition</h3>
+              <p>Vérification minutieuse sous éclairage LED/UV. Touches finales sur chaque détail : joints, plastiques, vitres, logos. Résultat showroom garanti.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-step="5">
+            <div class="timeline-dot">
+              <span>05</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M8 40L24 16L40 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14 32h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M24 16V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Livraison</h3>
+              <p>Remise des clés accompagnée d'un rapport détaillé et de conseils d'entretien personnalisés. Un certificat de traitement est fourni pour les protections céramique et PPF.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STATS ===================== -->
+    <section id="stats">
+      <canvas id="statsCanvas"></canvas>
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item reveal-up">
+            <div class="stat-number" data-target="500" data-suffix="+">0</div>
+            <div class="stat-label">Véhicules traités</div>
+            <div class="stat-bar"><span></span></div>
+          </div>
+          <div class="stat-item reveal-up" style="--d:0.15s">
+            <div class="stat-number" data-target="5" data-suffix=" ans">0</div>
+            <div class="stat-label">D'expertise</div>
+            <div class="stat-bar"><span></span></div>
+          </div>
+          <div class="stat-item reveal-up" style="--d:0.3s">
+            <div class="stat-number" data-target="98" data-suffix="%">0</div>
+            <div class="stat-label">Clients satisfaits</div>
+            <div class="stat-bar"><span></span></div>
+          </div>
+          <div class="stat-item reveal-up" style="--d:0.45s">
+            <div class="stat-number" data-target="50" data-suffix="+">0</div>
+            <div class="stat-label">Services disponibles</div>
+            <div class="stat-bar"><span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TARIFS ===================== -->
     <section id="tarifs">
-      <!-- À coder : tableaux de prix -->
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label reveal-up">Nos formules</p>
+          <h2 class="section-title reveal-up delay-1">Tarifs <em>Transparents</em></h2>
+          <p class="section-desc reveal-up delay-2">Chaque formule est adaptée à votre véhicule et vos attentes.</p>
+        </header>
+        <div class="toggle-wrapper reveal-up delay-3">
+          <button class="toggle-btn active" id="toggleSingle" data-mode="single">Prestation unique</button>
+          <div class="toggle-switch" id="toggleSwitch">
+            <span id="toggleIndicator"></span>
+          </div>
+          <button class="toggle-btn" id="togglePack" data-mode="pack">Pack annuel <span class="toggle-badge">-20%</span></button>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card reveal-up" style="--d:0.1s" data-plan="essentiel">
+            <div class="pricing-card-inner">
+              <div class="pricing-head">
+                <h3>Essentiel</h3>
+                <p>L'entretien parfait, fait avec soin.</p>
+              </div>
+              <div class="pricing-price-wrap">
+                <span class="pricing-from">à partir de</span>
+                <div class="pricing-price" data-single="79" data-pack="63">79<span>€</span></div>
+              </div>
+              <ul class="pricing-features">
+                <li class="check-item"><span class="check-icon"></span>Lavage extérieur complet</li>
+                <li class="check-item"><span class="check-icon"></span>Nettoyage vitres & jantes</li>
+                <li class="check-item"><span class="check-icon"></span>Aspiration intérieure</li>
+                <li class="check-item"><span class="check-icon"></span>Plastiques et tableaux de bord</li>
+                <li class="check-item disabled"><span class="check-icon"></span>Polissage carrosserie</li>
+                <li class="check-item disabled"><span class="check-icon"></span>Protection céramique</li>
+              </ul>
+              <a href="#contact" class="pricing-btn">Choisir cette formule</a>
+            </div>
+          </div>
+
+          <div class="pricing-card pricing-card--featured reveal-up" style="--d:0.2s" data-plan="premium">
+            <div class="pricing-glow"></div>
+            <div class="pricing-badge-wrap">Le plus choisi</div>
+            <div class="pricing-card-inner">
+              <div class="pricing-head">
+                <h3>Premium</h3>
+                <p>Le full detailing, résultat showroom.</p>
+              </div>
+              <div class="pricing-price-wrap">
+                <span class="pricing-from">à partir de</span>
+                <div class="pricing-price" data-single="249" data-pack="199">249<span>€</span></div>
+              </div>
+              <ul class="pricing-features">
+                <li class="check-item"><span class="check-icon"></span>Tout le pack Essentiel</li>
+                <li class="check-item"><span class="check-icon"></span>Polissage 1 étape</li>
+                <li class="check-item"><span class="check-icon"></span>Décontamination argile</li>
+                <li class="check-item"><span class="check-icon"></span>Shampoing moquettes</li>
+                <li class="check-item"><span class="check-icon"></span>Traitement cuir nourri</li>
+                <li class="check-item disabled"><span class="check-icon"></span>Protection céramique</li>
+              </ul>
+              <a href="#contact" class="pricing-btn pricing-btn--gold shimmer-btn">Choisir cette formule</a>
+            </div>
+          </div>
+
+          <div class="pricing-card reveal-up" style="--d:0.3s" data-plan="ultimate">
+            <div class="pricing-card-inner">
+              <div class="pricing-head">
+                <h3>Ultimate</h3>
+                <p>La protection maximale des passionnés.</p>
+              </div>
+              <div class="pricing-price-wrap">
+                <span class="pricing-from">à partir de</span>
+                <div class="pricing-price" data-single="649" data-pack="519">649<span>€</span></div>
+              </div>
+              <ul class="pricing-features">
+                <li class="check-item"><span class="check-icon"></span>Tout le pack Premium</li>
+                <li class="check-item"><span class="check-icon"></span>Polissage 2 étapes</li>
+                <li class="check-item"><span class="check-icon"></span>Protection céramique 5 ans</li>
+                <li class="check-item"><span class="check-icon"></span>Vitres hydrophobes</li>
+                <li class="check-item"><span class="check-icon"></span>Jantes céramique</li>
+                <li class="check-item"><span class="check-icon"></span>Certificat de traitement</li>
+              </ul>
+              <a href="#contact" class="pricing-btn">Choisir cette formule</a>
+            </div>
+          </div>
+        </div>
+        <p class="pricing-note reveal-up">* Tarifs indicatifs, variables selon taille et état du véhicule. Devis gratuit sur demande.</p>
+      </div>
     </section>
 
-    <!-- SECTION CONTACT -->
-    <section id="contact">
-      <!-- À coder : formulaire de contact -->
+    <!-- ===================== TÉMOIGNAGES ===================== -->
+    <section id="temoignages">
+      <div class="noise-overlay"></div>
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label reveal-up">Ils nous font confiance</p>
+          <h2 class="section-title reveal-up delay-1">Nos <em>Clients</em> parlent</h2>
+        </header>
+        <div class="testimonial-carousel" id="testimonialCarousel">
+          <div class="testimonial-track" id="testimonialTrack">
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars" data-stars="5"></div>
+              <p class="testimonial-text">"Résultat absolument bluffant sur ma M4. La peinture est comme neuve, les micro-rayures ont totalement disparu. Un travail de professionnel passionné, je recommande sans hésiter."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <span>TM</span>
+                  <div class="avatar-ring"></div>
+                </div>
+                <div>
+                  <strong>Thomas M.</strong>
+                  <span>BMW M4 Competition</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars" data-stars="5"></div>
+              <p class="testimonial-text">"Protection céramique sur ma Porsche — impeccable du début à la fin. Très professionnel, rigoureux, et le résultat est à la hauteur. L'eau perle parfaitement, la voiture est superbe."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <span>SL</span>
+                  <div class="avatar-ring"></div>
+                </div>
+                <div>
+                  <strong>Sophie L.</strong>
+                  <span>Porsche 911 GT3</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars" data-stars="5"></div>
+              <p class="testimonial-text">"Détailing intérieur complet sur mon AMG GT. La sellerie cuir est comme sortie d'usine, aucune odeur ne subsiste. Travail soigné, délai respecté, communication parfaite. Merci !"</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <span>KR</span>
+                  <div class="avatar-ring"></div>
+                </div>
+                <div>
+                  <strong>Kevin R.</strong>
+                  <span>Mercedes AMG GT</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars" data-stars="5"></div>
+              <p class="testimonial-text">"Film PPF sur le capot et les ailes de mon Audi RS6. Pose parfaite, invisible, aucune bulle. Je recommande vivement WAILLS à tous les propriétaires qui tiennent à leur véhicule."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <span>JP</span>
+                  <div class="avatar-ring"></div>
+                </div>
+                <div>
+                  <strong>Jean-Pierre V.</strong>
+                  <span>Audi RS6 Avant</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars" data-stars="5"></div>
+              <p class="testimonial-text">"J'avais des doutes sur le polissage machine mais le résultat m'a stupéfié. Les swirls complètement effacés, la peinture reflète parfaitement. Un vrai artiste, je suis client à vie."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <span>AC</span>
+                  <div class="avatar-ring"></div>
+                </div>
+                <div>
+                  <strong>Alexandre C.</strong>
+                  <span>Ferrari 488 Spider</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="testimonial-controls">
+          <button class="testi-btn" id="testiPrev" aria-label="Précédent">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="testi-dots" id="testiDots"></div>
+          <button class="testi-btn" id="testiNext" aria-label="Suivant">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
     </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section id="faq">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label reveal-up">Questions fréquentes</p>
+          <h2 class="section-title reveal-up delay-1">Tout ce que vous<br><em>devez savoir</em></h2>
+        </header>
+        <div class="faq-list">
+          <div class="faq-item reveal-up">
+            <button class="faq-question" aria-expanded="false">
+              <span>Quelle est la différence entre un lavage classique et un détailing ?</span>
+              <div class="faq-icon"><span></span><span></span></div>
+            </button>
+            <div class="faq-answer">
+              <p>Un lavage classique nettoie la surface de façon superficielle. Le détailing va bien plus loin : décontamination chimique et mécanique, correction des défauts de peinture, traitement de chaque surface, protection longue durée. Le résultat est incomparable, et dure bien plus longtemps.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal-up" style="--d:0.1s">
+            <button class="faq-question" aria-expanded="false">
+              <span>Combien de temps dure une protection céramique ?</span>
+              <div class="faq-icon"><span></span><span></span></div>
+            </button>
+            <div class="faq-answer">
+              <p>Selon le produit et le niveau d'entretien, une protection céramique professionnelle dure entre 2 et 5 ans. Nous travaillons avec des produits de qualité professionnelle. Un entretien régulier (lavage doux, sans pression excessive) permet de maximiser sa durée de vie.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal-up" style="--d:0.2s">
+            <button class="faq-question" aria-expanded="false">
+              <span>Est-ce que vous vous déplacez ?</span>
+              <div class="faq-icon"><span></span><span></span></div>
+            </button>
+            <div class="faq-answer">
+              <p>Oui, nous intervenons en Île-de-France et nous pouvons nous déplacer dans un rayon plus large sur demande. Contactez-nous pour confirmer la disponibilité et les éventuels frais de déplacement selon votre localisation.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal-up" style="--d:0.3s">
+            <button class="faq-question" aria-expanded="false">
+              <span>Le polissage machine abîme-t-il la peinture ?</span>
+              <div class="faq-icon"><span></span><span></span></div>
+            </button>
+            <div class="faq-answer">
+              <p>Non, réalisé correctement par un professionnel avec les bons abrasifs et les bonnes techniques, le polissage machine est totalement sûr. Nous réalisons systématiquement une mesure d'épaisseur de peinture avant toute intervention pour travailler en toute sécurité.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal-up" style="--d:0.4s">
+            <button class="faq-question" aria-expanded="false">
+              <span>Combien de temps dure une prestation complète ?</span>
+              <div class="faq-icon"><span></span><span></span></div>
+            </button>
+            <div class="faq-answer">
+              <p>Cela dépend de la formule : un lavage premium prend 2 à 3 heures, un full détailing 1 journée, une céramique 2 à 3 jours. Nous vous communiquons toujours un délai précis lors du devis et nous le respectons rigoureusement.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal-up" style="--d:0.5s">
+            <button class="faq-question" aria-expanded="false">
+              <span>Comment puis-je entretenir mon véhicule après un traitement céramique ?</span>
+              <div class="faq-icon"><span></span><span></span></div>
+            </button>
+            <div class="faq-answer">
+              <p>Nous vous remettons un guide d'entretien complet lors de la livraison. En résumé : lavez avec un shampoing pH neutre, évitez les portiques automatiques, et utilisez un spray céramique de maintenance tous les 3 mois. Nos conseils personnalisés vous accompagnent sur la durée.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact">
+      <div class="noise-overlay"></div>
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact-left">
+            <p class="section-label reveal-up">Nous contacter</p>
+            <h2 class="section-title reveal-up delay-1">Réservez votre<br><em>Prestation</em></h2>
+            <p class="contact-intro reveal-up delay-2">Décrivez votre véhicule et vos attentes. Nous vous rappelons sous 24h avec un devis personnalisé et sans engagement.</p>
+            <div class="contact-infos">
+              <a href="tel:+33600000000" class="contact-info-item reveal-up" style="--d:0.3s">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <div>
+                  <strong>Téléphone</strong>
+                  <span>+33 6 XX XX XX XX</span>
+                </div>
+              </a>
+              <a href="mailto:contact@waills.fr" class="contact-info-item reveal-up" style="--d:0.4s">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <div>
+                  <strong>Email</strong>
+                  <span>contact@waills.fr</span>
+                </div>
+              </a>
+              <div class="contact-info-item reveal-up" style="--d:0.5s">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <div>
+                  <strong>Zone</strong>
+                  <span>Île-de-France & déplacement</span>
+                </div>
+              </div>
+            </div>
+            <!-- Map placeholder stylisé -->
+            <div class="map-placeholder reveal-up" style="--d:0.6s">
+              <div class="map-grid"></div>
+              <div class="map-pin">
+                <div class="map-pin-dot"></div>
+                <div class="map-pin-pulse"></div>
+              </div>
+              <div class="map-label">WAILLS — Île-de-France</div>
+            </div>
+          </div>
+          <div class="contact-right reveal-up" style="--d:0.2s">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <input type="text" id="f-prenom" name="prenom" required autocomplete="given-name" />
+                  <label for="f-prenom">Prénom</label>
+                  <span class="field-line"></span>
+                  <span class="field-error"></span>
+                </div>
+                <div class="form-field">
+                  <input type="text" id="f-nom" name="nom" required autocomplete="family-name" />
+                  <label for="f-nom">Nom</label>
+                  <span class="field-line"></span>
+                  <span class="field-error"></span>
+                </div>
+              </div>
+              <div class="form-field">
+                <input type="email" id="f-email" name="email" required autocomplete="email" />
+                <label for="f-email">Adresse email</label>
+                <span class="field-line"></span>
+                <span class="field-error"></span>
+              </div>
+              <div class="form-field">
+                <input type="tel" id="f-tel" name="telephone" autocomplete="tel" />
+                <label for="f-tel">Téléphone (optionnel)</label>
+                <span class="field-line"></span>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <input type="text" id="f-vehicule" name="vehicule" required />
+                  <label for="f-vehicule">Votre véhicule</label>
+                  <span class="field-line"></span>
+                  <span class="field-error"></span>
+                </div>
+                <div class="form-field form-field--select">
+                  <select id="f-formule" name="formule">
+                    <option value="" disabled selected></option>
+                    <option value="essentiel">Essentiel</option>
+                    <option value="premium">Premium</option>
+                    <option value="ultimate">Ultimate</option>
+                    <option value="sur-mesure">Sur-mesure</option>
+                  </select>
+                  <label for="f-formule">Formule souhaitée</label>
+                  <span class="field-line"></span>
+                </div>
+              </div>
+              <div class="form-field">
+                <textarea id="f-message" name="message" rows="4"></textarea>
+                <label for="f-message">Votre message</label>
+                <span class="field-line"></span>
+              </div>
+              <button type="submit" class="form-submit" id="formSubmit">
+                <span class="submit-text">Envoyer ma demande</span>
+                <span class="submit-progress"></span>
+                <svg class="submit-icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="form-success" id="formSuccess">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p>Message envoyé ! Nous vous recontactons sous 24h.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <!-- À coder : infos légales, réseaux sociaux -->
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="footer">
+    <div class="footer-bg-logo">WAILLS</div>
+    <div class="footer-noise"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo">WAILLS</a>
+          <p>L'art du détailing automobile.<br>Chaque détail compte, chaque finition révèle.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z" stroke="currentColor" stroke-width="1.5"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Lavage Premium</a></li>
+            <li><a href="#services">Polissage Machine</a></li>
+            <li><a href="#services">Protection Céramique</a></li>
+            <li><a href="#services">Film PPF</a></li>
+            <li><a href="#services">Détailing Intérieur</a></li>
+            <li><a href="#services">Ozénisation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Accueil</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#processus">Notre processus</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Réserver</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+33600000000">+33 6 XX XX XX XX</a></li>
+            <li><a href="mailto:contact@waills.fr">contact@waills.fr</a></li>
+            <li>Île-de-France</li>
+            <li>Lun–Sam : 8h–19h</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="footer-copy">© <span id="footerYear"></span> WAILLS — Tous droits réservés.</p>
+        <div class="footer-legal">
+          <a href="#">Mentions légales</a>
+          <a href="#">Politique de confidentialité</a>
+          <a href="#">CGV</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
